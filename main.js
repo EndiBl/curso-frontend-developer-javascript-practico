@@ -3,43 +3,43 @@ const desktopMenu = document.querySelector('.desktop-menu');
 const burgerIconMenu = document.querySelector('.menu');
 const mobileMenu = document.querySelector('.mobile-menu');
 const shoppingCart = document.querySelector('.navbar-shopping-cart');
-const asideCarritoInfo = document.querySelector('.product-detail');
+const shoppingCartContainer = document.querySelector('#shoppingCartContainer');
 const cardsContainer = document.querySelector('.cards-container');
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 burgerIconMenu.addEventListener('click', toggleMobileMenu);
-shoppingCart.addEventListener('click', toggleAsideCarritoInfo);
+shoppingCart.addEventListener('click', toggleshoppingCartContainer);
 
 
 function toggleDesktopMenu() {
-    const isAsideCarritoInfoClosed = asideCarritoInfo.classList.contains('inactive');
+    const isshoppingCartContainerClosed = shoppingCartContainer.classList.contains('inactive');
 
     desktopMenu.classList.toggle('inactive');
 
-    if (!isAsideCarritoInfoClosed) {
-        asideCarritoInfo.classList.add('inactive');
+    if (!isshoppingCartContainerClosed) {
+        shoppingCartContainer.classList.add('inactive');
     }
 }
 
 
 function toggleMobileMenu() {
-    const isAsideCarritoInfoClosed = asideCarritoInfo.classList.contains('inactive');
+    const isshoppingCartContainerClosed = shoppingCartContainer.classList.contains('inactive');
     
 
 
     mobileMenu.classList.toggle('inactive');
 
-    if (!isAsideCarritoInfoClosed) {
-        asideCarritoInfo.classList.add('inactive');
+    if (!isshoppingCartContainerClosed) {
+        shoppingCartContainer.classList.add('inactive');
     }  
 }
 
 
-function toggleAsideCarritoInfo() {
+function toggleshoppingCartContainer() {
     const isMobileMenuClosed = mobileMenu.classList.contains('inactive');
     const isDesktopMenuClosed = desktopMenu.classList.contains('inactive');
 
-    asideCarritoInfo.classList.toggle('inactive');
+    shoppingCartContainer.classList.toggle('inactive');
     
     if (!isMobileMenuClosed) {
         mobileMenu.classList.add('inactive');
@@ -79,7 +79,7 @@ productList.push({
 });
 productList.push({
     name: 'Makeup box',
-    price: 0,
+    price: 100,
     image: 'https://images.pexels.com/photos/2253833/pexels-photo-2253833.jpeg?auto=compress&cs=tinysrgb&w=400'
 });
 
@@ -89,7 +89,7 @@ function renderProducts(array) {
         productCard.classList.add('product-card');
     
         const productImg = document.createElement('img');
-        productImg.setAttribute('src', product.image)
+        productImg.setAttribute('src', product.image);
     
         const productInfo = document.createElement('div');
         productInfo.classList.add('product-info');
@@ -111,9 +111,10 @@ function renderProducts(array) {
     
         productInfo.append(productInfoFigure, productInfoDiv);
     
-        productCard.append(productImg, productInfo)
+        productCard.append(productImg, productInfo);
     
-        cardsContainer.appendChild(productCard)
+        cardsContainer.appendChild(productCard);
     }
 }
-renderProducts(productList)
+
+renderProducts(productList);
